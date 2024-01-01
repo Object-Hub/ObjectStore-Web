@@ -1,0 +1,92 @@
+$primary-color: #fefdfd;      // Branco
+$secondary-color-1: #b07b7c;  // Rosa Suave
+$secondary-color-2: #d2b1b1;  // Cinza Rosado
+$detail-color-1: #830505;     // Vermelho Escuro
+$detail-color-2: #851e1e;     // Vermelho Vinho
+
+header {
+  background-color: $detail-color-1;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+
+  h1 {
+    color: $primary-color;
+    font-size: 2.5rem;
+    margin: 0;
+  }
+
+  nav {
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+
+      li {        
+        a {
+          color: $primary-color;
+          text-decoration: none;
+          font-weight: 500;
+          padding: 0.5rem 1rem;
+      
+          span {
+            position: relative;
+      
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: -2px;
+              left: 0;
+              right: 0;
+              height: 2px;
+              background-color: $primary-color;
+              width: 0;
+              transition: width 0.3s ease;
+            }
+          }
+      
+          &:hover span::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+button {
+  background-color: $secondary-color-1; 
+  border: none;
+  padding: 0.5rem 1rem;
+  color: $primary-color;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: darken($secondary-color-1, 10%);
+    transition: all 0.5s ease;
+    z-index: -1;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+  }
+
+  &:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &:active {
+    filter: brightness(0.8);
+  }
+}
